@@ -8,7 +8,7 @@ const SignInRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        return !user ? <Component {...props} /> : <Redirect to="/app" />;
+        return !user ? <Component {...props} /> : <Redirect to="/dashboard" />;
       }}
     ></Route>
   );

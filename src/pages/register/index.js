@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import { useUser } from "../../contexts/user";
@@ -14,54 +14,34 @@ const RegisterPage = () => {
   } = useForm();
 
   const history = useHistory();
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { user } = useUser();
 
   const onSubmit = async (data) => {
-    let mounted = true;
     const { name, businessname, businessid } = data;
 
     setLoading(true);
 
     axios
-      .post(`${baseUrl}/business`, {
-        name: businessname,
-        identity: businessid,
+      .post(`${baseUrl}/register/new`, {
+        email: user.email,
+        user_name: name,
+        business_name: businessname,
+        business_identity: businessid,
       })
       .then((response) => {
         if (response.status === 200) {
-          axios
-            .post(`${baseUrl}/user`, {
-              email: user.email,
-              name: name,
-              business_identity: businessid,
-            })
-            .then((response) => {
-              if (response.status === 200) {
-                history.push("/dashboard");
-              }
-            })
-            .catch((error) => {
-              if (error.response) {
-                setErrorMessage(error.response.data.detail);
-              }
-            });
+          history.push("/dashboard");
         }
       })
       .catch((error) => {
+        setLoading(false);
         if (error.response) {
           setErrorMessage(error.response.data.detail);
         }
-      })
-      .finally(() => {
-        if (mounted) {
-          setLoading(false);
-        }
       });
-    return () => (mounted = false);
   };
 
   return (
@@ -122,7 +102,6 @@ const RegisterPage = () => {
               <p className="px-5 py-1">Rekisteröidy</p>
             </button>
           )}
-          <div className="h-10">{error && <p className="text-yellow-600">{error}</p>}</div>
         </div>
       </form>
       {errorMessage && (
