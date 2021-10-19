@@ -36,7 +36,7 @@ export default function UserContextComp({ children }) {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       try {
         if (user) {
-          setUser(user);
+          setTimeout(() => setUser(user), 2500);
         } else {
           setUser(null);
         }

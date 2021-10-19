@@ -6,11 +6,13 @@ import SignInRoute from "./routes/SignInRoute";
 import DashboardPage from "./pages/dashboard";
 import LandingPage from "./pages/landing";
 import RegisterPage from "./pages/register";
+import NavigationBar from "./common/navigation/NavigationBar";
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
+        <NavigationBar />
         <Switch position="fixed">
           <PrivateRoute path="/dashboard" component={DashboardPage} />
           <PrivateRoute path="/register" component={RegisterPage} />
