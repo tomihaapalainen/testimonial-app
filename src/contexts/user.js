@@ -1,4 +1,10 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { auth, handleSignOut } from "../firebase/client";
 import { getAdditionalUserInfo, getRedirectResult } from "@firebase/auth";
 import { useHistory } from "react-router";
@@ -19,24 +25,31 @@ export default function UserContextComp({ children }) {
   const fetchUserData = useCallback(async () => {
     getIdToken(user).then((idToken) => {
       axios
-        .get(`${baseUrl}/user/data`, { headers: { Authorization: `Bearer ${idToken}` } })
+        .get(`${baseUrl}/user/data`, {
+          headers: { Authorization: `Bearer ${idToken}` },
+        })
         .then((response) => {
           if (response.status === 200) {
             setUserData(response.data);
           }
         })
         .catch((error) => {
-          handleSignOut();
+          if (error.response.status === 404) {
+            setUserData({});
+            history.push("/register");
+          } else {
+            handleSignOut();
+          }
         })
         .finally(() => setLoading(false));
     });
-  }, [user]);
+  }, [user, history]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       try {
         if (user) {
-          setTimeout(() => setUser(user), 2500);
+          setUser(user);
         } else {
           setUser(null);
         }

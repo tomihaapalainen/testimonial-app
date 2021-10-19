@@ -1,11 +1,5 @@
-import { handleSignOut } from "../../firebase/client";
-
 const DashboardPage = () => {
-  return (
-    <div className="text-xl">
-      <button onClick={handleSignOut}>signout</button>
-    </div>
-  );
+  return <div className="text-xl"></div>;
 };
 
 export default DashboardPage;
