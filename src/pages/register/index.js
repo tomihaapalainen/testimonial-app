@@ -17,7 +17,7 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { user } = useUser();
+  const { user, setUserData } = useUser();
 
   const onSubmit = async (data) => {
     const { name, businessname, businessid } = data;
@@ -33,6 +33,7 @@ const RegisterPage = () => {
       })
       .then((response) => {
         if (response.status === 200) {
+          setUserData(response.data);
           history.push("/dashboard");
         }
       })
@@ -59,7 +60,9 @@ const RegisterPage = () => {
             />
           </div>
           <div className="h-6">
-            {errors.name?.type === "required" && <p className="text-red-400 text-xs">Täytä nimi</p>}
+            {errors.name?.type === "required" && (
+              <p className="text-red-400 text-xs">Täytä nimi</p>
+            )}
           </div>
         </div>
         <div>
