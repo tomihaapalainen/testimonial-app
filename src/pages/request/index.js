@@ -49,7 +49,7 @@ const RequestPage = () => {
   }
 
   if (givingFeedback) {
-    return <TextTestimonial />;
+    return <TextTestimonial cancel={() => setGivingFeedback(false)} />;
   }
 
   return (
@@ -69,7 +69,7 @@ const RequestPage = () => {
       <div className="w-full flex flex-col items-center space-y-10 sm:space-y-20">
         <button className="flex text-gray-800 justify-between items-center text-center px-5 py-3 border border-gray-800 hover:bg-white hover:shadow-md w-10/12 max-w-xs">
           <FaVideo size={25} />
-          <p>Anna videopalautetta</p>
+          <p>Kuvaa videopalaute</p>
         </button>
         <button
           onClick={() => setGivingFeedback(true)}
