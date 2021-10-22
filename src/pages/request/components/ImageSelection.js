@@ -32,13 +32,13 @@ const ImageSelection = ({
 
   if (image) {
     return (
-      <div className="flex flex-col justify-between items-center w-40 shadow-md">
+      <div className="flex flex-col justify-center items-center w-52">
         <img src={image} alt="" />
         <button
           onClick={handleRedo}
-          className="w-full h-full flex justify-center items-center p-3 text-gray-500 hover:text-gray-800 border border-gray-400"
+          className="w-full flex justify-center items-center py-5 text-gray-500 hover:text-gray-800"
         >
-          <FaRedo size={25} />
+          <FaRedo size={20} />
         </button>
       </div>
     );

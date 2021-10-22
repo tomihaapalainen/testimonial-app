@@ -58,25 +58,27 @@ const RequestPage = () => {
         <h1 className="text-7xl font-bold uppercase text-gray-800">
           {request.business_name}
         </h1>
-        <h2 className="text-gray-700 text-7xl">Haluisitko antaa palautetta?</h2>
+        <h2 className="text-gray-800 text-6xl">
+          Haluisitko antaa suosittelun?
+        </h2>
         <div className="flex justify-center items-center space-x-5">
-          <h2 className="text-gray-500 text-2xl">
+          <h2 className="text-gray-500 text-xl">
             Kuulisimme mielellämme ajatuksiasi
           </h2>
           <FaRegSmileBeam size={25} className="text-gray-700" />
         </div>
       </div>
       <div className="w-full flex flex-col items-center space-y-10 sm:space-y-20">
-        <button className="flex text-gray-800 justify-between items-center text-center px-5 py-3 border border-gray-800 hover:bg-white hover:shadow-md w-10/12 max-w-xs">
-          <FaVideo size={25} />
-          <p>Kuvaa videopalaute</p>
+        <button className="flex text-gray-800 justify-between items-center text-center px-5 py-4 border border-gray-800 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs">
+          <FaVideo size={28} />
+          <p>Kuvaa suosittelu</p>
         </button>
         <button
           onClick={() => setGivingFeedback(true)}
-          className="flex text-gray-800 justify-between items-center text-center px-5 py-3 border border-gray-800 hover:bg-white hover:shadow-md w-10/12 max-w-xs"
+          className="flex text-sm text-gray-600 justify-between items-center text-center px-5 py-3 border border-gray-500 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs"
         >
-          <FaPenAlt size={25} />
-          <p>Anna palautetta</p>
+          <FaPenAlt size={20} className="opacity-100" />
+          <p>Kirjoita suosittelu</p>
         </button>
       </div>
     </div>
