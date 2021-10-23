@@ -46,7 +46,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center py-5">
+    <div className="w-full h-screen flex flex-col items-center py-10 sm:py-20">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm px-5">
         <div>
           <label className="text-sm text-gray-700">Nimi*</label>

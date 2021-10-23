@@ -8,6 +8,7 @@ import LandingPage from "./pages/landing";
 import RegisterPage from "./pages/register";
 import NavigationBar from "./common/navigation/NavigationBar";
 import RequestPage from "./pages/request";
+import ThankYouPage from "./pages/thankyou";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch position="fixed">
           <PrivateRoute path="/dashboard" component={DashboardPage} />
           <PrivateRoute path="/register" component={RegisterPage} />
+          <Route path="/thankyou" component={ThankYouPage} />
           <Route path="/request/:id" component={RequestPage} />
           <SignInRoute path="/" component={LandingPage} />
         </Switch>

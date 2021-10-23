@@ -7,13 +7,18 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import ImageSelection from "./ImageSelection";
 import "./TextTestimonial.css";
+import { useHistory } from "react-router";
+import axios from "axios";
+import { baseUrl } from "../../../config";
 
-const TextTestimonial = ({ cancel }) => {
+const TextTestimonial = ({ request, cancel }) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const history = useHistory();
 
   const [open, setOpen] = useState(false);
 
@@ -37,7 +42,36 @@ const TextTestimonial = ({ cancel }) => {
   };
 
   const onSubmit = async (data) => {
-    const { username, usertitle, businessname, usertestimonial } = data;
+    const { username, usertitle, userbusiness, usertestimonial } = data;
+
+    try {
+      const data = new FormData();
+      const blob = await fetch(acceptedImage).then((res) => res.blob());
+      data.append("image", blob, "image.png");
+      const uploadResponse = await axios.post(
+        `${baseUrl}/testimonial/image`,
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data;" },
+        }
+      );
+      if (uploadResponse.status === 200) {
+        const saveResponse = await axios.post(`${baseUrl}/testimonial/new`, {
+          giver_name: username,
+          giver_title: usertitle,
+          business_name: userbusiness,
+          business_identity: request.business_identity,
+          picture_url: uploadResponse.data.url,
+          text: usertestimonial,
+        });
+
+        if (saveResponse.status === 201) {
+          history.push("/thankyou");
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -58,7 +92,7 @@ const TextTestimonial = ({ cancel }) => {
           />
           <div className="w-full flex flex-col">
             <div>
-              <label className="text-sm text-gray-700">Nimi*</label>
+              <label className="text-sm text-gray-700">Nimesi*</label>
               <div className="w-full border-b border-gray-300 rounded-sm focus-within:border-gray-600">
                 <input
                   {...register("username", { required: true })}
@@ -68,13 +102,13 @@ const TextTestimonial = ({ cancel }) => {
                 />
               </div>
               <div className="h-6">
-                {errors.name?.type === "required" && (
-                  <p className="text-red-400 text-xs">Täytä nimi</p>
+                {errors.username && (
+                  <p className="text-red-600 text-xs">Täytä nimesi</p>
                 )}
               </div>
             </div>
             <div>
-              <label className="text-sm text-gray-700">Titteli*</label>
+              <label className="text-sm text-gray-700">Tittelisi*</label>
               <div className="w-full border-b border-gray-300 rounded-sm focus-within:border-gray-600">
                 <input
                   {...register("usertitle", { required: true })}
@@ -84,13 +118,13 @@ const TextTestimonial = ({ cancel }) => {
                 />
               </div>
               <div className="h-6">
-                {errors.name?.type === "required" && (
-                  <p className="text-red-400 text-xs">Täytä titteli</p>
+                {errors.usertitle && (
+                  <p className="text-red-600 text-xs">Täytä tittelisi</p>
                 )}
               </div>
             </div>
             <div>
-              <label className="text-sm text-gray-700">Yritys</label>
+              <label className="text-sm text-gray-700">Yrityksesi</label>
               <div className="w-full border-b border-gray-300 rounded-sm focus-within:border-gray-600">
                 <input
                   {...register("userbusiness")}
@@ -105,20 +139,25 @@ const TextTestimonial = ({ cancel }) => {
         <div>
           <textarea
             {...register("usertestimonial", {
-              required: true,
+              required: {
+                value: true,
+                message: "Anna vähintään 50 merkkiä pitkä suosittelu",
+              },
               minLength: {
                 value: 50,
                 message: "Vähimmäispituus on 50 merkkiä",
               },
             })}
             className="w-full h-52 resize-none text-gray-800 bg-gray-100 appearance-none outline-none bg-none p-2"
-            placeholder="Kirjoita palautteesi tähän..."
+            placeholder="Kirjoita suosittelusi tähän..."
           />
-          {errors.userbusiness && (
-            <p className="text-red-400 text-xs">
-              {errors.userbusiness.message}
-            </p>
-          )}
+          <div className="h-6">
+            {errors.usertestimonial && (
+              <p className="text-red-600 text-xs">
+                {errors.usertestimonial.message}
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex justify-center">
           <button
@@ -129,7 +168,6 @@ const TextTestimonial = ({ cancel }) => {
           </button>
         </div>
       </form>
-
       <div className="w-10/12 max-w-screen-md flex flex-col">
         {capturingImage && !candidateImage && (
           <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-gray-300">

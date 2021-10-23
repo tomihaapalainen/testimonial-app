@@ -19,6 +19,7 @@ export default function UserContextComp({ children }) {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingUserData, setLoadingUserData] = useState(true);
 
   const history = useHistory();
 
@@ -74,12 +75,14 @@ export default function UserContextComp({ children }) {
   useEffect(() => {
     if (!user) {
       setLoading(false);
+      setLoadingUserData(false);
     } else {
       fetchUserData();
+      setLoadingUserData();
     }
   }, [user, fetchUserData]);
 
-  if (loading) {
+  if (loading || loadingUserData) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <Spinner />

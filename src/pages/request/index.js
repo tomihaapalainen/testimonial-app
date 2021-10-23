@@ -49,7 +49,12 @@ const RequestPage = () => {
   }
 
   if (givingFeedback) {
-    return <TextTestimonial cancel={() => setGivingFeedback(false)} />;
+    return (
+      <TextTestimonial
+        request={request}
+        cancel={() => setGivingFeedback(false)}
+      />
+    );
   }
 
   return (
