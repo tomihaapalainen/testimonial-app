@@ -148,7 +148,7 @@ const TextTestimonial = ({ request, cancel }) => {
                 message: "Vähimmäispituus on 50 merkkiä",
               },
             })}
-            className="w-full h-52 resize-none text-gray-800 bg-gray-100 appearance-none outline-none bg-none p-2"
+            className="w-full h-52 resize-none bg-transparent text-gray-800 border-b border-l border-gray-300 appearance-none outline-none bg-none p-2 placeholder-gray-500 shadow-md"
             placeholder="Kirjoita suosittelusi tähän..."
           />
           <div className="h-6">
@@ -162,7 +162,7 @@ const TextTestimonial = ({ request, cancel }) => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="text-gray-800 text-center px-3 py-2 border border-gray-800 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs"
+            className="text-center px-3 py-2 font-bold text-white bg-green-600 hover:bg-green-500 hover:shadow-md w-10/12 max-w-xs"
           >
             Lähetä
           </button>
@@ -230,7 +230,7 @@ const TextTestimonial = ({ request, cancel }) => {
         <div className="py-10">
           <button
             onClick={cancel}
-            className="px-5 py-2 text-gray-600 border border-gray-200 shadow-md"
+            className="px-5 py-2 text-gray-600 hover:text-gray-800 border border-gray-200 hover:border-gray-400 shadow-md"
           >
             Peruuta
           </button>

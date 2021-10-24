@@ -22,7 +22,6 @@ const VideoTestimonial = ({ request, cancel }) => {
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
   const [objectURL, setObjectURL] = useState(null);
-  const [videoBlob, setVideoBlob] = useState(null);
 
   const handleDataAvailable = useCallback(
     ({ data }) => {
@@ -62,7 +61,6 @@ const VideoTestimonial = ({ request, cancel }) => {
 
   const handleRecordAgain = () => {
     setObjectURL(null);
-    setVideoBlob(null);
     setRecordedChunks([]);
   };
 
@@ -71,10 +69,8 @@ const VideoTestimonial = ({ request, cancel }) => {
 
     try {
       const data = new FormData();
-      const blob = new Blob(recordedChunks, {
-        type: "video/webm",
-      });
-      data.append("image", blob, "video.webm");
+      const blob = await fetch(objectURL).then((res) => res.blob());
+      data.append("video", blob, "video.webm");
       const uploadResponse = await axios.post(
         `${baseUrl}/testimonial/video`,
         data,
@@ -105,8 +101,17 @@ const VideoTestimonial = ({ request, cancel }) => {
       <div className="flex flex-col justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-10/12 max-w-screen-md space-y-3 flex flex-col justify-center items-center"
+          className="w-10/12 max-w-screen-sm space-y-5 flex flex-col justify-center items-center"
         >
+          <div className="flex flex-col w-10/12 justify-center items-center max-w-screen-sm">
+            <ReactPlayer url={objectURL} controls />
+          </div>
+          <button
+            onClick={handleRecordAgain}
+            className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:bg-white hover:shadow-md"
+          >
+            Kuvaa uudestaan
+          </button>
           <div className="w-full flex flex-col">
             <div>
               <label className="text-sm text-gray-700">Nimesi*</label>
@@ -152,16 +157,7 @@ const VideoTestimonial = ({ request, cancel }) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-10/12 justify-center items-center max-w-screen-sm">
-            <ReactPlayer url={objectURL} controls />
-          </div>
           <div className="w-10/12 max-w-sm flex flex-col items-center mt-5 sm:mt-10 space-y-5 sm:space-y-10">
-            <button
-              onClick={handleRecordAgain}
-              className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:bg-white hover:shadow-md"
-            >
-              Kuvaa uudestaan
-            </button>
             <button
               type="submit"
               className="w-full flex justify-center px-5 py-3 font-bold text-white bg-green-600 hover:bg-green-500 hover:shadow-md"
@@ -177,7 +173,7 @@ const VideoTestimonial = ({ request, cancel }) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="w-10/12 max-w-screen-sm">
-        <Webcam audio={false} ref={webcamRef} width={1280} height={720} />
+        <Webcam audio={true} ref={webcamRef} width={1280} height={720} />
         <div className="w-full flex items-center">
           {!capturing && (
             <button

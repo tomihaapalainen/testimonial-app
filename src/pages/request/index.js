@@ -70,11 +70,9 @@ const RequestPage = () => {
   return (
     <div className="flex flex-col justify-center items-center space-y-20">
       <div className="flex flex-col text-center max-w-screen-lg space-y-5 sm:space-y-10">
-        <h1 className="text-7xl font-bold uppercase text-gray-800">
-          {request.business_name}
-        </h1>
-        <h2 className="text-gray-800 text-6xl">
-          Haluisitko antaa suosittelun?
+        <h2 className="text-7xl text-gray-800">
+          Haluisitko antaa suosittelun <strong>{request.business_name}</strong>
+          :lle?
         </h2>
         <div className="flex justify-center items-center space-x-5">
           <h2 className="text-gray-500 text-xl">
@@ -93,7 +91,7 @@ const RequestPage = () => {
         </button>
         <button
           onClick={() => setGivingFeedback(true)}
-          className="flex text-sm text-gray-600 justify-between items-center text-center px-5 py-3 border border-gray-500 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs"
+          className="flex text-sm text-gray-600 hover:text-gray-800 justify-between items-center text-center px-5 py-3 border border-gray-500 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs"
         >
           <FaPenAlt size={20} className="opacity-100" />
           <p>Kirjoita suosittelu</p>
