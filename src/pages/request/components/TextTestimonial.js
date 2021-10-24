@@ -192,7 +192,7 @@ const TextTestimonial = ({ request, cancel }) => {
                 </button>
                 <button
                   onClick={() => setCapturingImage(false)}
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-red-500"
+                  className="flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-red-500"
                 >
                   <ImCross size={30} />
                 </button>
@@ -216,7 +216,7 @@ const TextTestimonial = ({ request, cancel }) => {
                   <FaCheck size={32} />
                 </button>
                 <button
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 hover:text-red-500"
+                  className="flex justify-center border border-gray-400 px-5 py-3 hover:text-red-500"
                   onClick={() => setCandidateImage(null)}
                 >
                   <ImCross size={30} />

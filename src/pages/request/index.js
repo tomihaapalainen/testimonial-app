@@ -5,6 +5,7 @@ import axios from "axios";
 import Spinner from "../../common/loading/Spinner";
 import { FaPenAlt, FaRegSmileBeam, FaVideo } from "react-icons/fa";
 import TextTestimonial from "./components/TextTestimonial";
+import VideoTestimonial from "./components/VideoTestimonial";
 
 const RequestPage = () => {
   const { id } = useParams();
@@ -57,6 +58,15 @@ const RequestPage = () => {
     );
   }
 
+  if (givingVideoFeedback) {
+    return (
+      <VideoTestimonial
+        request={request}
+        cancel={() => setGivingVideoFeedback(false)}
+      />
+    );
+  }
+
   return (
     <div className="flex flex-col justify-center items-center space-y-20">
       <div className="flex flex-col text-center max-w-screen-lg space-y-5 sm:space-y-10">
@@ -74,7 +84,10 @@ const RequestPage = () => {
         </div>
       </div>
       <div className="w-full flex flex-col items-center space-y-10 sm:space-y-20">
-        <button className="flex text-gray-800 justify-between items-center text-center px-5 py-4 border border-gray-800 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs">
+        <button
+          onClick={() => setGivingVideoFeedback(true)}
+          className="flex text-gray-800 justify-between items-center text-center px-5 py-4 border border-gray-800 hover:bg-white shadow-md hover:shadow-lg w-10/12 max-w-xs"
+        >
           <FaVideo size={28} />
           <p>Kuvaa suosittelu</p>
         </button>
