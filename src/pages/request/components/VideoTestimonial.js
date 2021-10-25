@@ -160,7 +160,7 @@ const VideoTestimonial = ({ request, cancel }) => {
           <div className="w-10/12 max-w-sm flex flex-col items-center mt-5 sm:mt-10 space-y-5 sm:space-y-10">
             <button
               type="submit"
-              className="w-full flex justify-center px-5 py-3 font-bold text-white bg-green-600 hover:bg-green-500 hover:shadow-md"
+              className="w-full flex justify-center px-5 py-3 font-bold text-white bg-sky-600 hover:bg-sky-500 hover:shadow-md"
             >
               Lähetä
             </button>
@@ -173,12 +173,18 @@ const VideoTestimonial = ({ request, cancel }) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="w-10/12 max-w-screen-sm">
-        <Webcam audio={true} ref={webcamRef} width={1280} height={720} />
+        <Webcam
+          audio={true}
+          ref={webcamRef}
+          width={1280}
+          height={720}
+          videoConstraints={{ width: 1280, height: 720, frameRate: 30 }}
+        />
         <div className="w-full flex items-center">
           {!capturing && (
             <button
               onClick={handleStartCaptureClick}
-              className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-green-500"
+              className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-sky-500"
             >
               <FaVideo size={30} />
             </button>
@@ -186,7 +192,7 @@ const VideoTestimonial = ({ request, cancel }) => {
           {capturing && (
             <button
               onClick={handleStopCaptureClick}
-              className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-green-500"
+              className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-sky-500"
             >
               <FaStop size={30} />
             </button>
@@ -202,7 +208,7 @@ const VideoTestimonial = ({ request, cancel }) => {
           {recordedChunks.length > 0 && (
             <button
               onClick={handlePreview}
-              className="w-full flex justify-center px-5 py-3 font-bold text-white bg-green-600 hover:bg-green-500 hover:shadow-md"
+              className="w-full flex justify-center px-5 py-3 font-bold text-white bg-sky-600 hover:bg-sky-500 hover:shadow-md"
             >
               <p>Jatka</p>
             </button>

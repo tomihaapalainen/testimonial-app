@@ -46,7 +46,7 @@ const ImageSelection = ({
 
   return (
     <div className="flex justify-center items-center border border-gray-400 w-60 shadow-md">
-      <div className="w-full h-full cursor-pointer flex justify-center items-center text-gray-800 hover:text-green-500">
+      <div className="w-full h-full cursor-pointer flex justify-center items-center text-gray-800 hover:text-sky-500">
         {!open && (
           <button
             disabled={capturingImage}
@@ -60,13 +60,13 @@ const ImageSelection = ({
           <div className="w-full h-full flex flex-col justify-evenly items-center z-20">
             <button
               onClick={handleStartCapturingImage}
-              className="w-full h-full flex justify-center items-center p-3 text-gray-800 hover:text-green-500"
+              className="w-full h-full flex justify-center items-center p-3 text-gray-800 hover:text-sky-500"
             >
               <FaCamera size={30} />
             </button>
             <button
               onClick={handleFileInput}
-              className="relative w-full h-full flex justify-center items-center p-3 text-gray-800 hover:text-green-500"
+              className="relative w-full h-full flex justify-center items-center p-3 text-gray-800 hover:text-sky-500"
             >
               <input
                 type="file"

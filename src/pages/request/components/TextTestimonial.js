@@ -162,7 +162,7 @@ const TextTestimonial = ({ request, cancel }) => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="text-center px-3 py-2 font-bold text-white bg-green-600 hover:bg-green-500 hover:shadow-md w-10/12 max-w-xs"
+            className="text-center px-3 py-2 font-bold text-white bg-sky-600 hover:bg-sky-500 hover:shadow-md w-10/12 max-w-xs"
           >
             Lähetä
           </button>
@@ -186,7 +186,7 @@ const TextTestimonial = ({ request, cancel }) => {
               <div className="w-full flex items-center">
                 <button
                   onClick={captureWebcamImage}
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-green-500"
+                  className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-sky-500"
                 >
                   <FaCamera size={30} />
                 </button>
@@ -210,7 +210,7 @@ const TextTestimonial = ({ request, cancel }) => {
               />
               <div className="w-full flex justify-between items-center text-gray-700">
                 <button
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 hover:text-green-500"
+                  className="w-full flex justify-center border border-gray-400 px-5 py-3 hover:text-sky-500"
                   onClick={handleClickAcceptCrop}
                 >
                   <FaCheck size={32} />
