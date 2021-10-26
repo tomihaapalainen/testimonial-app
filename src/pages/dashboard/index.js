@@ -31,7 +31,10 @@ const DashboardPage = () => {
 
   return (
     <div className="w-full h-full flex justify-center items-center">
-      <TestimonialPreviewWall testimonials={testimonials} />
+      <TestimonialPreviewWall
+        testimonials={testimonials}
+        setTestimonials={setTestimonials}
+      />
     </div>
   );
 };
