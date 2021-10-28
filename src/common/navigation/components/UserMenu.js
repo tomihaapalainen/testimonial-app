@@ -2,18 +2,16 @@ import { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { handleSignOut } from "../../../firebase/client";
 
-const UserMenu = ({ setShowAccount }) => {
+const UserMenu = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="p-5 flex flex-col">
+    <div className="flex flex-col">
       <button
         onClick={() => setOpen(!open)}
-        className="px-2 flex justify-between items-center cursor-pointer text-gray-600 hover:text-gray-800"
+        className="flex justify-between items-center cursor-pointer text-gray-900 hover:text-gray-700"
       >
-        <div>
-          <FaUserAlt size={30} />
-        </div>
+        <FaUserAlt size={25} />
       </button>
       <div className="relative">
         {open && (
@@ -22,14 +20,8 @@ const UserMenu = ({ setShowAccount }) => {
             className="cursor-pointer absolute right-1 top-1 w-40 z-20 p-2 flex flex-col space-y-4 border border-gray-300 bg-gray-50"
           >
             <button
-              onClick={setShowAccount}
-              className="px-3 py-1 text-gray-600 hover:text-gray-800"
-            >
-              Tili
-            </button>
-            <button
               onClick={handleSignOut}
-              className="px-3 py-1 text-gray-600 hover:text-gray-800"
+              className="px-3 py-1 text-gray-900 hover:text-gray-700"
             >
               Kirjaudu ulos
             </button>

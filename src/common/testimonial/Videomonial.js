@@ -64,7 +64,7 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full shadow-lg">
+    <div className="flex flex-col w-full h-full shadow-lg text-lg">
       <div className="player-container group w-full h-full rounded-md">
         <ReactPlayer
           onError={() => setVideoError(true)}
@@ -76,11 +76,11 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
           onEnded={() => setPlaying(false)}
         />
         {!playing && (
-          <div className="flex flex-col justify-start items-center font-bold text-lg absolute top-0 left-0 bg-sky-700 w-full px-3 py-1">
-            <div className="w-full flex justify-start text-white uppercase">
+          <div className="flex flex-col justify-start items-center font-bold absolute top-0 left-0 bg-gray-800 w-full px-3 py-1">
+            <div className="w-full flex justify-start text-gray-300 uppercase">
               <p>{testimonial.giver_name}</p>
             </div>
-            <div className="w-full flex space-x-1 text-white text-base">
+            <div className="w-full flex space-x-1 text-gray-300 text-base">
               <p>{testimonial.giver_title}</p>
               {testimonial.business_name && (
                 <p>@ {testimonial.business_name}</p>
@@ -90,7 +90,9 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
         )}
         {videoError && (
           <div className="absolute bottom-0 w-full text-center">
-            <p className="text-red-700">Täällä ei näytä olevan mitään...</p>
+            <p className="text-red-600 font-bold">
+              Täällä ei näytä olevan mitään...
+            </p>
           </div>
         )}
         <button
@@ -102,13 +104,13 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
             {!playing && (
               <FaPlay
                 size={44}
-                className="group-hover:text-sky-400 text-sky-500"
+                className="group-hover:text-gray-400 text-gray-500"
               />
             )}
             {playing && (
               <FaPause
                 size={44}
-                className="hidden group-hover:block text-sky-400"
+                className="hidden group-hover:block text-gray-400"
               />
             )}
           </div>
@@ -120,7 +122,7 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
             <button
               disabled={updating}
               onClick={acceptTestimonial}
-              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-sky-600 hover:bg-sky-700 text-white"
+              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-gray-900 hover:bg-gray-700 text-gray-100"
             >
               <p>Julkaise</p>
               <div className="pl-2 w-4 h-4">
@@ -132,7 +134,7 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
             <button
               disabled={updating}
               onClick={hideTestimonial}
-              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-red-700 hover:bg-red-800 text-white"
+              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-gray-300 hover:bg-gray-400"
             >
               <p>Piilota</p>
               <div className="pl-2 w-4 h-4">

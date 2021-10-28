@@ -44,7 +44,7 @@ const RequestPage = () => {
   if (errorMessage) {
     return (
       <div className="flex flex-col justify-center items-center">
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+        {errorMessage && <p className="text-red-600">{errorMessage}</p>}
       </div>
     );
   }
@@ -68,8 +68,8 @@ const RequestPage = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center space-y-20">
-      <div className="flex flex-col text-center max-w-screen-lg space-y-5 sm:space-y-10">
+    <div className="flex flex-col justify-center items-center space-y-20 mt-10 sm:mt-20">
+      <div className="flex flex-col text-center max-w-screen-md space-y-5 sm:space-y-10">
         <h2 className="text-7xl text-gray-800">
           Haluisitko antaa suosittelun <strong>{request.business_name}</strong>
           :lle?

@@ -61,7 +61,7 @@ const RegisterPage = () => {
           </div>
           <div className="h-6">
             {errors.name?.type === "required" && (
-              <p className="text-red-400 text-xs">Täytä nimi</p>
+              <p className="text-red-600 text-xs">Täytä nimi</p>
             )}
           </div>
         </div>
@@ -76,7 +76,7 @@ const RegisterPage = () => {
           </div>
           <div className="h-6">
             {errors.businessname?.type === "required" && (
-              <p className="text-red-400 text-xs">Täytä yrityksen nimi</p>
+              <p className="text-red-600 text-xs">Täytä yrityksen nimi</p>
             )}
           </div>
         </div>
@@ -91,7 +91,7 @@ const RegisterPage = () => {
           </div>
           <div className="h-6">
             {errors.businessid?.type === "required" && (
-              <p className="text-red-400 text-xs">Täytä Y-tunnus</p>
+              <p className="text-red-600 text-xs">Täytä Y-tunnus</p>
             )}
           </div>
         </div>

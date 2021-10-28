@@ -75,7 +75,7 @@ const TextTestimonial = ({ request, cancel }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-10 sm:mt-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-10/12 max-w-screen-md space-y-3"
@@ -162,7 +162,7 @@ const TextTestimonial = ({ request, cancel }) => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="text-center px-3 py-2 font-bold text-white bg-sky-600 hover:bg-sky-500 hover:shadow-md w-10/12 max-w-xs"
+            className="text-center px-3 py-2 font-bold text-white bg-gray-900 hover:bg-gray-700 hover:shadow-md w-10/12 max-w-xs"
           >
             Lähetä
           </button>
@@ -186,13 +186,13 @@ const TextTestimonial = ({ request, cancel }) => {
               <div className="w-full flex items-center">
                 <button
                   onClick={captureWebcamImage}
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-sky-500"
+                  className="w-full flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-gray-500"
                 >
                   <FaCamera size={30} />
                 </button>
                 <button
                   onClick={() => setCapturingImage(false)}
-                  className="flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-red-500"
+                  className="flex justify-center border border-gray-400 px-5 py-3 text-gray-800 hover:text-red-600"
                 >
                   <ImCross size={30} />
                 </button>
@@ -210,13 +210,13 @@ const TextTestimonial = ({ request, cancel }) => {
               />
               <div className="w-full flex justify-between items-center text-gray-700">
                 <button
-                  className="w-full flex justify-center border border-gray-400 px-5 py-3 hover:text-sky-500"
+                  className="w-full flex justify-center border border-gray-400 px-5 py-3 hover:text-gray-500"
                   onClick={handleClickAcceptCrop}
                 >
                   <FaCheck size={32} />
                 </button>
                 <button
-                  className="flex justify-center border border-gray-400 px-5 py-3 hover:text-red-500"
+                  className="flex justify-center border border-gray-400 px-5 py-3 hover:text-red-600"
                   onClick={() => setCandidateImage(null)}
                 >
                   <ImCross size={30} />

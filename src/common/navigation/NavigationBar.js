@@ -2,21 +2,17 @@ import { signInWithGoogleRedirect } from "../../firebase/client";
 import { FaGoogle } from "react-icons/fa";
 import { useUser } from "../../contexts/user";
 import UserMenu from "./components/UserMenu";
-import AccountModal from "./components/AccountModal";
-import { useState } from "react";
 
 const NavigationBar = () => {
   const { user } = useUser();
 
-  const [showAccount, setShowAccount] = useState(false);
-
   return (
-    <div className="flex flex-col p-3 sm:p-5">
+    <div className="flex flex-col p-3 sm:p-5 border-b-2 border-gray-900 text-gray-100">
       {!user && (
         <nav className="flex justify-end items-center">
           <button
             onClick={signInWithGoogleRedirect}
-            className="px-5 py-2 w-full max-w-xs border border-gray-800 flex justify-between items-center shadow-md hover:shadow-lg hover:bg-white text-gray-600 hover:text-gray-800"
+            className="px-5 py-2 w-full max-w-xs flex justify-between items-center shadow-md hover:shadow-lg bg-gray-900 text-gray-100 hover:bg-gray-700"
           >
             <FaGoogle size={30} />
             <p>Kirjaudu Google-tilillä</p>
@@ -24,16 +20,11 @@ const NavigationBar = () => {
         </nav>
       )}
       {user && (
-        <nav className="flex justify-end items-center">
-          <UserMenu setShowAccount={() => setShowAccount(true)} />
+        <nav className="w-full flex items-center">
+          <div className="w-full flex justify-end items-center px-5 py">
+            <UserMenu />
+          </div>
         </nav>
-      )}
-      <AccountModal show={showAccount} setShow={setShowAccount} />
-      {showAccount && (
-        <div
-          onClick={() => setShowAccount(false)}
-          className="absolute top-0 left-0 w-full h-screen bg-gray-100 z-10"
-        ></div>
       )}
     </div>
   );

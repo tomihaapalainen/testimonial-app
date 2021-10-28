@@ -63,7 +63,7 @@ const Textimonial = ({ testimonial, updateTestimonial, preview = false }) => {
 
   return (
     <div className="w-full flex flex-col shadow-lg text-lg">
-      <div className="w-full flex justify-start leading-5 p-3 space-x-3 bg-sky-700 text-white font-bold">
+      <div className="w-full flex justify-start leading-5 p-3 space-x-3 bg-gray-800 text-gray-300 font-bold">
         <div className="w-14 h-14 flex justify-center items-center">
           {!imageError && (
             <img
@@ -73,13 +73,13 @@ const Textimonial = ({ testimonial, updateTestimonial, preview = false }) => {
               alt=""
             />
           )}
-          {imageError && <FaUser size={45} className="text-white" />}
+          {imageError && <FaUser size={45} className="text-gray-300" />}
         </div>
         <div>
           <div className="w-full flex justify-start uppercase">
             <p>{testimonial.giver_name}</p>
           </div>
-          <div className="w-full flex space-x-1 text-white text-base">
+          <div className="w-full flex space-x-1 text-gray-200 text-base">
             <p>{testimonial.giver_title}</p>
             {testimonial.business_name && <p>@ {testimonial.business_name}</p>}
           </div>
@@ -94,7 +94,7 @@ const Textimonial = ({ testimonial, updateTestimonial, preview = false }) => {
             <button
               disabled={updating}
               onClick={acceptTestimonial}
-              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-sky-600 hover:bg-sky-700 text-white"
+              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-gray-900 hover:bg-gray-700 text-gray-100"
             >
               <p>Julkaise</p>
               <div className="pl-2 w-4 h-4">
@@ -106,7 +106,7 @@ const Textimonial = ({ testimonial, updateTestimonial, preview = false }) => {
             <button
               disabled={updating}
               onClick={hideTestimonial}
-              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-red-700 hover:bg-red-800 text-white"
+              className="flex space-x-1 justify-center items-center w-full m-1 py-2 bg-gray-300 hover:bg-gray-400"
             >
               <p>Piilota</p>
               <div className="pl-2 w-4 h-4">

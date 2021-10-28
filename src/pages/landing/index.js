@@ -10,7 +10,7 @@ const LandingPage = () => {
     <div className="flex flex-col justify-center items-center w-full h-screen">
       <button
         onClick={handleRegisterWithGoogle}
-        className="flex justify-between items-center w-full max-w-xs px-5 py-2 border border-gray-900 shadow-md hover:bg-white hover:shadow-lg text-gray-600 hover:text-gray-800"
+        className="flex justify-between items-center w-full max-w-xs px-5 py-2 shadow-md hover:shadow-lg bg-gray-900 hover:bg-gray-700 text-gray-100"
       >
         <FaGoogle size={30} />
         <p className="text-base sm:text-lg">Rekisteröidy Google-tilillä</p>
