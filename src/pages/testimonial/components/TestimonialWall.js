@@ -1,19 +1,7 @@
 import Textimonial from "../../../common/testimonial/Textimonial";
 import Videomonial from "../../../common/testimonial/Videomonial";
 
-const TestimonialPreviewWall = ({ testimonials, setTestimonials }) => {
-  const updateTestimonial = (testimonial, data) => {
-    let begin = testimonials.slice(
-      0,
-      testimonials.findIndex((elem) => elem.id === testimonial.id)
-    );
-    let end = testimonials.slice(
-      testimonials.findIndex((elem) => elem.id === testimonial.id) + 1
-    );
-    let updatedTestimonials = [...begin, data, ...end];
-    setTestimonials(updatedTestimonials);
-  };
-
+const TestimonialWall = ({ testimonials }) => {
   return (
     <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-screen-xl">
       {testimonials
@@ -24,16 +12,14 @@ const TestimonialPreviewWall = ({ testimonials, setTestimonials }) => {
               <Textimonial
                 key={i}
                 testimonial={t}
-                updateTestimonial={updateTestimonial}
-                preview
+                updateTestimonial={() => {}}
               />
             )}
             {t.video_url && (
               <Videomonial
                 key={i}
                 testimonial={t}
-                updateTestimonial={updateTestimonial}
-                preview
+                updateTestimonial={() => {}}
               />
             )}
           </div>
@@ -42,4 +28,4 @@ const TestimonialPreviewWall = ({ testimonials, setTestimonials }) => {
   );
 };
 
-export default TestimonialPreviewWall;
+export default TestimonialWall;

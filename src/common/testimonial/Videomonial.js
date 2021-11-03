@@ -91,7 +91,7 @@ const Videomonial = ({ testimonial, updateTestimonial, preview = true }) => {
         {videoError && (
           <div className="absolute bottom-0 w-full text-center">
             <p className="text-red-600 font-bold">
-              Täällä ei näytä olevan mitään...
+              Täällä ei näytä olevan mitään ¯\_(ツ)_/¯
             </p>
           </div>
         )}

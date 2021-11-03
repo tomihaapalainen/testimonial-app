@@ -9,6 +9,7 @@ import RegisterPage from "./pages/register";
 import NavigationBar from "./common/navigation/NavigationBar";
 import RequestPage from "./pages/request";
 import ThankYouPage from "./pages/thankyou";
+import TestimonialPage from "./pages/testimonial";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <PrivateRoute path="/register" component={RegisterPage} />
           <Route path="/thankyou" component={ThankYouPage} />
           <Route path="/request/:id" component={RequestPage} />
+          <Route path="/wall/:id" component={TestimonialPage} />
           <SignInRoute path="/" component={LandingPage} />
         </Switch>
       </UserProvider>
